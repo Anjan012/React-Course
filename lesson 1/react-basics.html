@@ -1,0 +1,63 @@
+<!-- tells the computer to use to modern version of html  -->
+<!DOCTYPE html>
+<!-- represents a website -->
+<html>
+  <!-- contains that is not visible to the user/page -->
+  <head>
+    <title>React Basics</title>
+  </head>
+
+  <!-- That is visible in the page -->
+  <body>
+    <div class="js-container"></div>
+
+    <!-- load external library -->
+    <!-- React can be used in different places (websites and mobiles apps) so the creators of react decided to divide it into two external libraries
+     React = shared features
+     ReactDOM = specific features for the websites
+
+     for website: load react & react-dom
+     for mobile apps: load react &react-native
+     -->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <!-- Load Babel compiler (Babel is a JS compiler translate other languages into javascript) When using React, we don't use normal JavaScript we use an enhanced version javascript calledJSX 
+    JSX = JavaScript XML (same as javascript, but we can write HTML directly in out Javascript code)
+    -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      // React is an external library for building user interfaces easily (external library- it is a buch of code that is outside our computer and we can load this code on our website, and use it)
+      const container = document.querySelector(".js-container"); // feature of JS DOM
+      // display a welcome message
+      ReactDOM.createRoot(container).render(
+        "Welcome to SuperSimpleDev React Course"
+      );
+
+      // ReactDOM.createRoot() : Sets up React to set up react we have to give html element so we gave container (container lets us organize our code everything we write in React will be inside this container)
+
+      // using react features
+      // .render() : Renders the content inside the container (display something)
+
+      // problem with JSX is that our web browser doesn't understand it, we need to transform it into regular JavaScript to do that we can use Babel two steps 1. load the babel 2. give type="text/babel" to our script tag this attribute tells to translate all the code inside the script tag into regular JavaScript
+
+      const button = <button> hello </button>;
+      const paragraph = <p> This is a paragraph </p>;
+      //   ReactDOM.createRoot(container).render(paragraph);
+
+      // using react ot display multiple elements -----------------------------
+      // (JSX lets finding errors easier, you can instead write HTML directly in your JavaScript code)
+      const div = (
+        <div>
+          <button> hello </button>
+          <p> This is a paragraph {2+2} </p>
+        </div>
+      );
+      ReactDOM.createRoot(container).render(div);
+    </script>
+
+    <!-- Load external library -->
+    <!-- external library is the code that is just outside our computer  -->
+    <!-- <script src="https://unpkg.com/supersimpledev@8.6.4/external-library.js"></script> -->
+  </body>
+</html>

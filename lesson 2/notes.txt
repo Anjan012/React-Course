@@ -1,0 +1,42 @@
+Components ---------------------------------
+it is just a piece of a website 
+When building a website:
+- It's better to split up the website into pieces.
+- So we can work on a small piece of the website at a time 
+
+- In react the component name must start with a capital letter. PascalCase
+
+Component Synatax----------
+{ChatInput()}
+<ChatInput> </ChatInput> // has more advantage creating own html element use this 
+
+Fragment <> </> -----------------------
+using div to group will insert div unnecessary so for that we can use fragment
+<>
+ <input />
+ <button> Send </button>
+</>
+
+Components are designed to be reuseable--
+
+props------------------------------------------------------------------
+Every component function one parameter called props This props parameter is an object and it contains all the attribute that we give to the component
+props = properties
+props make our component resuable 
+
+
+Shortcut on React------------
+
+destructuring :
+const message = props.message;
+const {message} = props; // shortcut
+
+Even shorter than above:
+function ChatMessage(message, sender){
+    // code 
+} // This is used even more 
+
+
+// Best practice is to use the component(App) to create the website 
+
+
