@@ -1,0 +1,44 @@
++<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 8</title>
+</head>
+<body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+        // if there exist a discount display that under original price
+        function ProductDetails({title, price, discount}){
+            return (
+                <>
+                    <p>{title}</p>
+                    {!discount && <p>Price: ${price}</p>}
+                    {discount && <del>Price: ${price}</del>}
+                    {discount && <p>Discount price: ${discount}</p>}
+                    <button>Add to Cart</button>
+                </>
+            );
+        }
+
+        function App(){
+            return (
+                <>
+                    <ProductDetails title="Cotton Socks" price="10.90" discount="5.45"/>
+                    <ProductDetails title="Tennis balls" price="6.00"/>
+                    <ProductDetails title="Plain T-Shirt" price="7.99"/>
+                </>
+            );
+        }
+
+        const container = document.querySelector(".js-container");
+        ReactDOM.createRoot(container).render(<App/>);
+
+    </script>
+</body>
+</html>
