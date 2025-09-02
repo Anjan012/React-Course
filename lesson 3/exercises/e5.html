@@ -13,12 +13,30 @@
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
 
-        function App(){
+
+        // This is like a blueprint for making buttons
+        // It receives two things from its parent: count (the current number) and setCount (a way to change that number)
+        
+        function Counter({count, setCount}){
+            function increaseCount(){
+                setCount(count + 1); 
+            }
             return (
                 <>
-                    <p>Cotton Socks</p>
-                    <p>Price: $10</p>
-                    <button>Add to Cart</button>
+                <button onClick={increaseCount}>Clicked {count} {count === 1 ? "time" : "times"}</button>
+
+                </>
+            );
+        }
+
+        function App(){
+            const [count, setCount] = React.useState(0); 
+            // Both buttons get the SAME count and SAME setCount function, This means both buttons will always show the same number!
+           
+            return (
+                <>
+                    <Counter count={count} setCount={setCount} />
+                    <Counter count={count} setCount={setCount} />
                 </>
             );
         }
@@ -26,6 +44,8 @@
         const container = document.querySelector(".js-container");
         ReactDOM.createRoot(container).render(<App/>);
 
+
     </script>
 </body>
 </html>
+

@@ -13,22 +13,37 @@
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
 
-        function ProductDetails({title, price}){
+
+        
+        
+        function Counter({count, setCount}){
+            function increaseCount(){
+                setCount(count + 1); 
+            }
+
+            
             return (
                 <>
-                    <p>{title}</p>
-                    <p>Price: ${price}</p>
-                    <button>Add to Cart</button>
+                <button onClick={increaseCount}>Clicked {count} {count === 1 ? "time" : "times"}</button>
+
                 </>
             );
         }
 
         function App(){
+            const [count, setCount] = React.useState(0); 
+            // Both buttons get the SAME count and SAME setCount function, This means both buttons will always show the same number!
+           
+            function resetCounter(){
+                setCount(0);
+            }
+
             return (
                 <>
-                    <ProductDetails title="Cotton Socks" price="10.90"/>
-                    <ProductDetails title="Tennis balls" price="6.00"/>
-                    <ProductDetails title="Cotton Socks" price="7.99"/>
+                    <Counter count={count} setCount={setCount} />
+                    <Counter count={count} setCount={setCount} />
+                    <button onClick={resetCounter}> Reset</button>
+
                 </>
             );
         }
@@ -36,6 +51,8 @@
         const container = document.querySelector(".js-container");
         ReactDOM.createRoot(container).render(<App/>);
 
+
     </script>
 </body>
 </html>
+

@@ -20,9 +20,7 @@
           setInputText(event.target.value);
         }
 
-        // Exercise 11 : use async/await to wait for chatbot to generate the message 
-        // Exercise 12 : update the code so that the input field gets empty when we type and send the message immediately and while waiting display loading message and remove it after 
-        async function sendMessage() {
+        function sendMessage() {
 
           const newChatMessages = [
             ...chatMessages,
@@ -34,11 +32,9 @@
           ];
 
           setChatMessages(newChatMessages); 
-          setInputText('');
-
 
           // using chatbot external library to get the message
-          const response = await Chatbot.getResponseAsync(inputText);
+          const response = Chatbot.getResponse(inputText);
           setChatMessages((chatMessages) => [
             ...newChatMessages,
             {
@@ -48,16 +44,7 @@
             },
           ]);
 
-          
-        }
-
-        // Exercise 9 and 10 
-        function handleKeyDown(event){
-          if(event.key === 'Enter'){
-            sendMessage();
-          } else if(event.key === 'Escape'){
-            setInputText('');
-          }
+          setInputText('');
         }
 
         return (
@@ -66,9 +53,8 @@
               placeholder="Send a message to Chatbot"
               size="30"
               onChange={saveInputText} value={inputText}
-              onKeyDown={handleKeyDown}
             />
-            <button onClick={sendMessage} > Send </button>
+            <button onClick={sendMessage}> Send </button>
           </>
         );
       }
