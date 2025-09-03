@@ -15,6 +15,7 @@
     <script type="text/babel">
       function ChatInput({chatMessages, setChatMessages}) {
         const [inputText, setInputText] = React.useState("");
+        const [isLoading, setIsLoading] = React.useState(false);
         function saveInputText(event) {
           // event is the object that contains the details about the event or about the change
           setInputText(event.target.value);
@@ -22,7 +23,14 @@
 
         // Exercise 11 : use async/await to wait for chatbot to generate the message 
         // Exercise 12 : update the code so that the input field gets empty when we type and send the message immediately and while waiting display loading message and remove it after 
+        // Exercise 13 : Add an isLoading state to <ChatInput> that represents if it's loading (waiting for a response form the chatbot). if it is loading, don't allow sending the 
         async function sendMessage() {
+
+          if (isLoading || inputText === ''){
+            return;
+          }
+
+          setIsLoading(true);
 
           const newChatMessages = [
             ...chatMessages,
@@ -31,9 +39,19 @@
               sender: "user",
               id: crypto.randomUUID(),
             },
+            
           ];
 
-          setChatMessages(newChatMessages); 
+          setChatMessages([
+            ...newChatMessages,
+            {
+              // This creates a temporary loading message beacause we don't save this message in newChatmessages, it will be remove later when we add the response.
+              // -- you can also implement this logic in different way in above just add comma and paste the below code there and in the resopnse you can make a copy of new message without the last message in the array : ...newChatMessages.slice(0, newChatMessages.length - 1),
+              message: "Loading...",
+              sender: "robot",
+              id: crypto.randomUUID(),
+            }
+          ]); 
           setInputText('');
 
 
@@ -47,6 +65,8 @@
               id: crypto.randomUUID(),
             },
           ]);
+
+          setIsLoading(false);
 
           
         }
