@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercise 2</title>
+    <style>
+        .btn-on{
+        background-color: rgb(25, 135, 84);
+        color: white;
+        padding: 10px 15px;
+        border:none;
+        border-radius: 10px;
+
+        }
+    </style>
 </head>
 <body>
     <div class="js-container"></div>
@@ -13,41 +23,29 @@
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
 
-
-            // THE REACT CYCLE:----------------------------------------
-            // 1. Component renders with count = 0
-            // 2. User clicks button
-            // 3. increaseCount() function runs
-            // 4. setCount(count + 1) updates state
-            // 5. React re-renders component with new count value
-            // 6. Button text updates automatically
-            // 7. Repeat from step 2
+        
 
         function App(){
 
-            const [count, setCount] = React.useState(0); 
-            function increaseCount(){
-                setCount(count + 1); //  Takes current count value, adds 1, updates state
-                // When this runs:
-                // 1. State changes from current value to current value + 1
-                // 2. React detects state change
-                // 3. React re-renders this component
-                // 4. Button text updates to show new count
+            const [isButtonOn, setisButtonOn] = React.useState(true);
+            function switchButtonOn(){
+                if(isButtonOn){
+                    setisButtonOn(false);
+                    return;
+                }
+                setisButtonOn(true);
             }
+
             return (
-                <button onClick={increaseCount}>Clicked {count} times</button>
+                <button className="btn-on" onClick={switchButtonOn}>{isButtonOn ? "ON" : "OFF"}</button>
             );
+
+            
         }
 
         const container = document.querySelector(".js-container");
         ReactDOM.createRoot(container).render(<App/>);
 
-        // React.useState(0) - Creates state starting with value 0
-        // count - Variable to READ the current value
-        // setCount - Function to CHANGE the value
-        // Array destructuring - Gets both items from the array useState returns
-
     </script>
 </body>
 </html>
-

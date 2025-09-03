@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercise 1</title>
+    <style>
+        .btn-on{
+        background-color: rgb(25, 135, 84);
+        color: white;
+        padding: 10px 15px;
+        border:none;
+        border-radius: 10px;
+
+        }
+    </style>
 </head>
 <body>
     <div class="js-container"></div>
@@ -16,12 +26,8 @@
         
 
         function App(){
-
-            function increaseCount(){
-                console.log("Button clicked");
-            }
             return (
-                <button onClick={increaseCount}>Clicked 0 times</button>
+                <button className="btn-on">ON</button>
             );
         }
 

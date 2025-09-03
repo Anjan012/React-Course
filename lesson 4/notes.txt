@@ -1,87 +1,34 @@
-lets generate the message
-1. save the data
-2. generate the html
-
-In react if we insert an array of component we need to give each component a prop called key (key helps react track changes in the array, it must be unique) :
-{ChatMessages.map((chatMessage)=>{
-    return (
-    <ChatMessage
-        message={chatMessage.message} 
-        sender={chatMessage.sender}
-        key= {chatMessage.id}
-    />
-    );
-})}
-
-Event handler---------------
-run a function when we interact with the website 
-{} = save any type of value in a prop (including a function)
-The Event prop always start with on and then name (eg: onClick), Event prop must use camelCase 
-You should give the function directly without running it ()
-<button onClick={sendMessage()}>Send message</button>  --- Wrong, it will contain undefined
-<button onClick={sendMessage}>Send message</button>  -- Right 
+In React we use className to set the class - React is JS code, JS already has a feature called class so class is a reserved word we cannot use it.
+- className in react converted in class in html
 
 
+flexbox: lets us create flexible layout 
+To use flexbox:
+1. Create container around element 
+2. Add display: flex; to container 
+3. Use flexbox features
 
-id: crypto.randomUUID() // This is the javascript code that will generate a uniqueID String 
+When a block element (like <div>) is inside a flexbox:
+- it no longer takes up the entire line 
+- it only takes up as much space as it needs to 
 
+by default, elements inside a flexbox will stretch vertically.
 
-State----------------------
-State is data that can change over time in your component
-state is data that is connected to the html, when we update the data it will update the html, In react use state to save the data that changes over time 
+by default body has a default margin of 8px on all sides
 
-In react, we should not modify the data directly. We should always create a copy, and then modify the copy - This helps React be more efficient 
+by deafult flexbox position all element horizontally (row)
 
-state is not update immediately state is updated after all of the code is finished
+hooks: lets us insert React features into our component : React.useState() is also a hook whih inserts a React feature called state into our component React has others hook we can use and every hook start with the oerd "use"
+useState()
+useEffect() : run some code after the component is created or updated 
+useRef()
+and more ........
 
-
-Spread operator(...) -----------------------
-takes the values in an array, and copies them into a new array
-
-
-array destructuring:-----------------
-
-// const chatMessages = array[0]; // we have most current value of chatMessages
-// const setChatMessages = array[1]; // function to update chatMessages (naming convention is set then nameofdata) In react we should not direclty update the data, we should use this function to update the data cause this function tells React that data changed and to update the html- if we update the data directly, React will not update the html (also known as updater data)
-
---shortcut for above
-const [chatMessages, setChatMessages] = array; // array destructuring gets the first value out of this array and saves it in chatMessages variable and second value to setChatMessages
-
-
-Getting the data----------------------
-React best practice: Do not use the DOM manually (React is managing the website), it might interfere with React.
-
---------------------------------------------------------------------
-onChange={} = runs a function when we change the text inside an <input>
-event.target.value; // gives us the element that we're typing in - in this case React gives us access to the input element .value for getting the value
-
-lifting the state up-----------------------------------
-lets us share state between multiple components
+put the hook at the top of the componenet  
+Hooksshould not be inside anything (function , if statement...)
 
 
-Controlled Input------------------------------------
-using the value prop we can contrl the text inside the text box
+Best Practice: Give useEffect a dependency array to avoid running to often
 
-
-
-
-
-
-
-
-
-extra code explain:
-function sendMessage() {
-
-    // this updater function will replace chatMessages with the new array, because we use updater function react will regenerate the html
-    setChatMessages([
-    ...chatMessages,
-    {
-        message: 'test',
-        sender: 'user',
-        id: crypto.randomUUID()
-    } // using spread operator we made a copy of the chatMessages array and added a value to the end of the array
-    ]);
-
-    console.log(chatMessages);
-}
+React.useRef(); = let us save automatically html element from the component 
+Ref is a container with special react features 

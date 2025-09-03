@@ -4,6 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercise 4</title>
+    <style>
+
+        body{
+            font-family: Arial;
+        }
+        p{
+            font-size: 20px;
+        }
+
+        .input-field{
+            padding: 10px 20px;
+            border-width: 1px;
+            border-radius: 10px;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .btn{
+            background-color: rgb(0, 123, 255);
+            
+        }
+
+    </style>
 </head>
 <body>
     <div class="js-container"></div>
@@ -13,36 +36,31 @@
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
 
-
-            // THE REACT CYCLE:----------------------------------------
-            // 1. Component renders with count = 0
-            // 2. User clicks button
-            // 3. increaseCount() function runs
-            // 4. setCount(count + 1) updates state
-            // 5. React re-renders component with new count value
-            // 6. Button text updates automatically
-            // 7. Repeat from step 2
-        
-        function Counter(){
-            const [count, setCount] = React.useState(0); 
-            function increaseCount(){
-                setCount(count + 1); 
-            }
+        function LoginForm(){
             return (
-                <>
-                <button onClick={increaseCount}>Clicked {count} {count === 1 ? "time" : "times"}</button>
-
-                </>
+                <div>
+                    <input 
+                        type="email" 
+                        placeholder="Email" 
+                        className = "input-field"
+                    /> <br/>
+                    <input 
+                        type="password" 
+                        placeholder="Password" 
+                        className = "input-field"
+                    /> <br/>
+                    <button>Login</button>
+                    <button>Sign up</button>
+                </div>
             );
         }
 
+        // creating a component app
         function App(){
-
-           
             return (
                 <>
-                    <Counter/>
-                    <Counter/>
+                    <p>Hello, Welcome to my website</p>
+                    <LoginForm />
                 </>
             );
         }
@@ -50,8 +68,6 @@
         const container = document.querySelector(".js-container");
         ReactDOM.createRoot(container).render(<App/>);
 
-
     </script>
 </body>
 </html>
-
