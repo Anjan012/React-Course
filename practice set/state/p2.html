@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>p2</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+    //   Question 2: Text Input Display (Easy)
+    //   Create a component that:
+    //   Has an input field
+    //   Shows whatever you type in the input field below it in real-time
+    //   Example: If you type "Hello", it shows "Hello" below the input
+
+
+              function InputElement() {
+                const [userInput, setUserInput] = React.useState("");
+
+                function handleInputChange(event){
+                    setUserInput(event.target.value);
+                }
+
+                return (
+                    <>
+                        <input 
+                            type="text" 
+                            placeholder="Type Something..."
+                            onChange={handleInputChange}
+                            value={userInput}
+                        />
+                        <p>{userInput}</p>
+                    </>
+                )
+              }
+
+              function App(){
+
+
+                  return (
+                      <>
+                          <InputElement/>
+                      </>
+                  );
+              }
+
+              const container = document.querySelector(".js-container");
+              ReactDOM.createRoot(container).render(<App/>);
+    </script>
+  </body>
+</html>

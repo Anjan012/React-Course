@@ -18,7 +18,7 @@ by default body has a default margin of 8px on all sides
 
 by deafult flexbox position all element horizontally (row)
 
-hooks: lets us insert React features into our component : React.useState() is also a hook whih inserts a React feature called state into our component React has others hook we can use and every hook start with the oerd "use"
+hooks: lets us insert React features into our component : React.useState() is also a hook whih inserts a React feature called state into our component React has others hook we can use and every hook start with the word "use"
 useState()
 useEffect() : run some code after the component is created or updated 
 useRef()

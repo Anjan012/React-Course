@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>p3</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      //   Question 3: Show/Hide Toggle (Medium)
+      //   Create a component that:
+
+      //   Has a button that says "Show Message"
+      //   When clicked, shows a paragraph with text "Hello, I am visible!"
+      //   The button text changes to "Hide Message"
+      //   Clicking again hides the message and changes button back to "Show Message"
+
+      //   Hint:
+
+      //   Use boolean state (true/false)
+      //   Use ! operator to flip between true and false
+      //   Use conditional rendering to show/hide the paragraph
+
+      function ToggleMessage() {
+        const [isVisible, setIsVisible] = React.useState(false);
+
+        function toggleVisibility() {
+            setIsVisible(!isVisible);
+        }
+
+        return (
+            <>
+                {/* we are using guard operator here */}
+                {isVisible && <p> Hello, I am visible! </p>}
+                <button onClick={toggleVisibility}>{isVisible ? "Hide Message" : "Show Message"}</button>
+
+            </>
+        )
+      }
+
+      function App() {
+        return (
+          <>
+            <ToggleMessage />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

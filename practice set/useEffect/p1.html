@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>p1</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+      function Timer() {
+        const [seconds, setSeconds] = React.useState(0);
+        const timerRef = React.useRef(null);
+
+        const startTimer = () => {
+          timerRef.current = setInterval(() => {
+            setSeconds((s) => s + 1);
+          }, 1000);
+        };
+
+        const stopTimer = () => clearInterval(timerRef.current);
+
+        React.useEffect(() => {
+          return () => clearInterval(timerRef.current);
+        }, []);
+
+        return (
+          <div>
+            <h1>{seconds}</h1>
+            <button onClick={startTimer}>Start</button>
+            <button onClick={stopTimer}>Stop</button>
+          </div>
+        );
+      }
+
+      function App() {
+        return (
+          <>
+            <Timer />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

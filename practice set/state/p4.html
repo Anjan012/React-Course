@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>p4</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      //       Question 4: Color Switcher (Medium)
+      // Create a component that:
+
+      // Shows a <div> with a background color (start with 'red')
+      // Has 3 buttons: "Red", "Blue", "Green"
+      // Clicking each button changes the div's background color
+      // Bonus challenge: Make the div at least 200px tall so you can see the color clearly
+
+      // Hints:
+
+      // State stores the current color as a string (e.g., "red")
+      // You need 3 different click handlers (or 1 smart one!)
+      // Use inline styles: style={{ backgroundColor: yourStateVariable }}
+
+      function ColorSwitcher() {
+        const [color, setColor] = React.useState("");
+
+        function changeColor(color) {
+          setColor(color);
+        }
+
+        return (
+          <>
+            <div
+              style={{ backgroundColor: color || "purple", height: "200px" }}
+            ></div>
+            {/* It sees changeColor("red") and thinks "Oh, a function call!" // It calls the function IMMEDIATELY (before any click!) React reads the line again → Calls function again → Infinite loop! 
+            // Result: Function runs on render, not on click. Often causes infinite re-render loop!
+            */}
+            {/* To avoid that, we wrap it in an anonymous function */}
+            <button onClick={() => changeColor("red")}>Red</button>
+            <button onClick={() => changeColor("blue")}>Blue</button>
+            <button onClick={() => changeColor("green")}>Green</button>
+          </>
+        );
+      }
+
+      function App() {
+        return (
+          <>
+            <ColorSwitcher />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

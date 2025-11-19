@@ -31,7 +31,7 @@
         );
       }
 
-      function ChatMessage({message, sender}){
+      function ChatMessage({message, sender}){ // since props is an object we can destructure it directly, this is equivalent to below
         // console.log(props);
         // const message = props.message;
         // const sender = props.sender;
@@ -50,6 +50,7 @@
 
         return (
           <div>
+            {/* using guard operator to conditionally render elements */}
             {sender === 'robot' && (
               <img src="robot.png" width="50"/>
             )}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>p5</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      // Question 5: Simple Todo List (Hard)
+      // Create a component that:
+
+      // Has an input field and an "Add" button
+      // When you type something and click "Add", it appears in a list below
+      // Each list item shows the text you entered
+      // Bonus: Clear the input after adding an item
+
+      function ToDoApp() {
+        const [userInput, setUserInput] = React.useState("");
+        const [todoList, setTodoList] = React.useState([]);
+
+        
+        function handleInputChange(event) {
+          setUserInput(event.target.value);
+        }
+
+        function addToDOList() {
+          setTodoList([
+            ...todoList,
+            userInput
+          ]);
+          setUserInput("");
+        }
+
+        return (
+          <>
+            <input type="text" value={userInput} onChange={handleInputChange} style= {{padding: "8px 16px"}} placeholder="Enter a task"/>
+            <button onClick={addToDOList} style= {{padding: "8px 16px", backgroundColor: "lightgreen", border: "0"}}>Add</button>
+            <ol type="1" style={{marginTop: "16px"}}>
+              {todoList.map((activity, index) => {
+                return <li key={index} style={{padding: "8px 16px", margin: "4px 0", backgroundColor: "lightyellow"}}>{activity}</li>;
+              })}
+            </ol>
+          </>
+        )
+      }
+
+      function App() {
+        return (
+          <>
+            <ToDoApp />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
